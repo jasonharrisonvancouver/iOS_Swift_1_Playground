@@ -5,6 +5,7 @@
  
     `print("Hello, world!")`
  */
+print("Hello, world!")
 
 /*:
  ## Variables
@@ -16,12 +17,16 @@ let school = "Lighthouse Labs"
 var students = 0
 students = 7
 
+let name: String = "Jason"
+var age = 46
+
+
 /*:
  - Experiment:
  Try creating a variable and/or constant for your name, and age.
  What happens if you try to change the value of a constant?
  */
-
+//name = "tony"
 
 //: ---
 /*:
@@ -43,6 +48,7 @@ students = 7
  */
 
 var weeksCompleted = 4
+//weeksCompleted = "4"
 
 /*:
  As you can see, you don't have to write the type explicitly. Providing a value when you create a constant or variable lets the compiler _infer_ its type. In the example above, the compiler infers that `students` is an integer because its initial value is an integer.
@@ -71,12 +77,15 @@ let explicitDouble: Double = 70
  What type are the variables `tipAmount`, and `isOpen`?
  */
 
+
+let taxUSD: Float = 4
+
 var tipAmount = 6.01
-// tipAmount's type is:
+// tipAmount's type is: Double
 
 
 var isOpen = true
-// isOpen's type is:
+// isOpen's type is: Bool
 
 /*:
 Values are never implicitly converted to another type. If you need to convert a value to a different type, explicitly make an instance of the desired type.
@@ -114,7 +123,9 @@ Volume of cylinder = pi * radius^2 * height
 /*:
  Hint: Make sure your radius is of type `Double`
  */
-
+let radius:Double = 10
+let pi = 3.14159
+let area : Double = pi * (radius * radius)
 /*:
  - Callout(Problem 2):
  Find the circumference of a circle with a diameter of 24 metres.
@@ -122,7 +133,7 @@ Volume of cylinder = pi * radius^2 * height
 /*:
  Hint: Radius is half the length of the diameter
  */
-
+let circumference = 2 * pi * radius
 /*:
  - Callout(Problem 3):
  Find the volume of a cylinder with a radius of 5 metres and a height of 7 metres
@@ -130,6 +141,6 @@ Volume of cylinder = pi * radius^2 * height
 /*:
  Hint: You can double-check your answers yourself or on Google... Google has a really easy input mechanism for all three of these formulas if you just search them up.
  */
-
+let volume = 4 / 3 * pi * radius * radius * radius
 
 //: [Next](@next)

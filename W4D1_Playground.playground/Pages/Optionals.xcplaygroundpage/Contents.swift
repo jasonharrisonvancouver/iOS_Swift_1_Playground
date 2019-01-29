@@ -20,12 +20,15 @@ var doubleNumberValue: Double? = nil
  Declare a non-optional variable of a `String` and set it to `nil`. What happens?
  */
 
+var address :String? = nil
 
 /*:
  - Experiment:
  Declare an optional variable of a type `String` and set an initial `String` value to it. Then set it to `nil` on the next line. Does this work? Why or why not?
  */
-
+var cityName : String = "vancouver"
+//cityName = nil
+// cannot be nil; type is String not String?
 
 /*:
  Let's consider multiplying two numbers together that are of different types. Since we have a `Double` and an `Int`, we need to convert the two numbers to the same type. For example, creating a new `Double` using an `Int`.
@@ -38,7 +41,7 @@ var integerValue: Int = 20 // integerValue is an Int
 var convertIntegerValue = Double(integerValue) // convert integerValue to a Double
 ratio * convertIntegerValue // now this works!
 
-
+print("\(ratio * convertIntegerValue)")
 /*:
  Now let's say I have a `String` that contains digits and I want to use the numbered value of the `String` to multiply with another `Double`.
  */
@@ -46,6 +49,12 @@ ratio * convertIntegerValue // now this works!
 /*:
  - Experiment:
  Declare a `String` containing digits and try converting it to a `Double` the same way shown in the above example. What do you notice about the variable type? Hint: Use 'Option' + Mouse Click on the variable to see the type
+ */
+var numberString = "45.6"
+let num = (Double)(numberString)
+print("\(ratio * num!)")
+/*:
+ Now let's say I have a `String` that contains digits and I want to use the numbered value of the `String` to multiply with another `Double`.
  */
 
 
@@ -77,14 +86,15 @@ print("\(myOptionalDouble!)")
   - Experiment:
  Now you try! Try printing out your converted `Double?` with a force unwrap
 */
-
+// done above
 
 
 /*:
  - Experiment:
  Go back and change your `String` to something that has no digits. What happens and why?
  */
-
+// crashes
+// did not get a Double after all
 
 
 /*:
@@ -94,10 +104,17 @@ print("\(myOptionalDouble!)")
  */
 
 
+var someString : String? = "tiger woods"
+print("\(someString!)")
+// doesn't say "Optional" with the !
 /*:
  - Experiment:
  Try setting an optional `String` variable to a non-optional `String` variable. What happens? What can you do to prevent the compiler from throwing an error?
  */
+var opt : String? = "optional"
+
+var req : String  = opt ?? "darn it" // Value of optional type 'String?' must be unwrapped to a value of type 'String'"
+
 
 
 /*:
@@ -106,7 +123,7 @@ print("\(myOptionalDouble!)")
   The code below uses a conditional unwrap on `gravityConstant`. This creates a new variable `unwrapped`, but only if `gravityConstant` is *not* nil. If you option click on the variable `unwrapped` you will notice that it is a `Double` not a `Double?`
 */
 
-let gravityConstant: Double? = 9.8
+let gravityConstant: Double? = nil//9.8
 
 if let unwrapped = gravityConstant {
     // unwrapped exists in this block, and is number unwrapped.
@@ -121,18 +138,23 @@ if let unwrapped = gravityConstant {
  - Experiment:
  Try changing `gravityConstant` to nil. What happens?
  */
-
+// did not unwrap
 
 /*:
  - Experiment:
  Create an array with containing elements of any type of your choice. Try experimenting with the array methods `'first'` and `'last'` to find out what they do. You'll see that both return optional values. Print out the values of first and last by using conditional unwrapping.
  */
 
+var schools : [String] = ["bcit", "ubc", "sfu"]
+var school = schools[0]
 
+print("\(schools.first!)")
 /*:
  - Experiment:
  Using the same array, experiment with the array method `'indexOf'` and find out what it does. Print out the value using conditional unwrapping.
  */
+//var schoolIndex = schools.indexOf
+// don't have indexOf method anymore
 
 
 /*:
@@ -150,3 +172,44 @@ if let unwrapped = gravityConstant {
     Try printing a car's price using a name that doesn't exist.
 */
 //: [Next](@next)
+let cars : [String:Int] = ["Mazda3":50000, "CRV":60000, "Hummer":100000]
+
+var mazdaPrice :Int? = cars["Mazda3"]
+print("cost of Mazda3 is \(mazdaPrice!)")
+
+
+if let possibleMazdaPrice = mazdaPrice {
+    print("\(possibleMazdaPrice)")
+} else {
+    print("no mazda price")
+}
+
+var crvPrice :Int? = cars["CRV"]
+print("cost of crv is \(crvPrice!)")
+
+
+if let possibleCrvPrice = crvPrice {
+    print("\(possibleCrvPrice)")
+} else {
+    print("no crv price")
+}
+
+
+var hummerPrice :Int? = cars["CRV"]
+print("cost of hummer is \(hummerPrice!)")
+
+
+if let possibleHummerPrice = hummerPrice {
+    print("\(possibleHummerPrice)")
+} else {
+    print("no hummer price")
+}
+
+var lamboPrice :Int? = cars["lambo"]
+
+
+if let possibleLamboPrice = lamboPrice {
+    print("\(possibleLamboPrice)")
+} else {
+    print("no lambo price")
+}

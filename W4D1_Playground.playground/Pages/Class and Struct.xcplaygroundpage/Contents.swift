@@ -30,12 +30,19 @@ struct ShapeStruct {
  - Experiment:
  Update the ShapeClass and add a new property 'name'. Also, update the description method to include the name when it prints.
  */
-
+class MyShapeClass {
+    var numberOfSides = 0
+    var name = ""
+    func description() -> String {
+        return "A shape with name \(name) and \(numberOfSides) sides."
+    }
+}
 
 /*:
  - Experiment:
  Try creating an instance of the ShapeClass. We can do this by writing the class name then putting parentheses '()' after the class name. Assign it to a declared variable and try setting the variables 'numberofSides' and 'name' and calling the 'description' method.
  */
+var myShape : MyShapeClass = MyShapeClass()
 
 
 /*:
@@ -50,10 +57,18 @@ class NamedShapeClass {
         self.name = name
     }
     
+    init(name: String, numberOfSides : Int) {
+        self.name = name
+        self.numberOfSides = numberOfSides
+    }
+    
     func description() -> String {
-        return "A shape with \(numberOfSides) sides."
+        return "A shape named \(name) with \(numberOfSides) sides."
     }
 }
+
+var shapey = NamedShapeClass(name: "triangle", numberOfSides: 3)
+print(shapey.description())
 
 /*:
  - Experiment:
@@ -72,7 +87,19 @@ class NamedShapeClass {
  */
 
 class Square : NamedShapeClass {
+    var sideLength : Int
     
+    
+    init(name : String, sideLength : Int) {
+
+        self.sideLength = sideLength
+        super.init(name: name)
+
+    }
+    
+    func area() -> Int{
+        return sideLength * sideLength
+    }
 }
 
 /*:
@@ -90,7 +117,28 @@ class Square : NamedShapeClass {
  - Add an instance of Toyota called toyota. Initialize it.
  - Add the drive() method to make sure it prints out "Prius"
  */
+class Car{
+    var model : String
+    
+    init(model : String) {
+        self.model = model
+    }
+    
+    func drive(){
+        print("driving a \(model)")
+    }
+}
 
+class Toyota : Car{
+    init() {
+        super.init(model: "Prius")
+    }
+}
+var nissan : Car = Car(model: "rogue")
+nissan.drive()
+
+var otherCar : Toyota = Toyota()
+otherCar.drive()
 
 
 /*:
@@ -104,25 +152,34 @@ Now create the same Person class but convert it to a struct. Uncomment 'Section 
 // Implement Person class under here!
 
 
+class Person{
+    var name : String
+    init(name : String) {
+        self.name = name
+    }
+}
+
 // Section A
-//var firstPersonObject = Person(name: "Joe")
-//var secondPersonObject = firstPersonObject
-//secondPersonObject.name = "Jane"
-//
-//print(firstPersonObject.name)
-//print(secondPersonObject.name)
+var firstPersonObject = Person(name: "Joe")
+var secondPersonObject = firstPersonObject
+secondPersonObject.name = "Jane"
+
+print(firstPersonObject.name)
+print(secondPersonObject.name)
 
 
 // Implement Person struct under here!
-
+struct PersonStr  {
+    var name : String
+}
 
 // Section B
-//var firstPersonStruct = Person(name: "Joe")
-//var secondPersonStruct = firstPersonStruct
-//secondPersonStruct.name = "Jane"
-//
-//print(firstPersonStruct.name)
-//print(secondPersonStruct.name)
+var firstPersonStruct = PersonStr(name: "Joe")
+var secondPersonStruct = firstPersonStruct
+secondPersonStruct.name = "Jane"
 
+print(firstPersonStruct.name)
+print(secondPersonStruct.name)
 
+ 
 //: [Next](@next)

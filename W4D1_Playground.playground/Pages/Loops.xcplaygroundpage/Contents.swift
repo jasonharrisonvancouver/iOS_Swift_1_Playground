@@ -29,19 +29,30 @@ for i in 2...5 {
  - Experiment:
  What's the difference between `2...5` vs `2..<5`?
  */
-
+// ... includes 5
+// ..< stops at 4
 
 /*:
  - Experiment:
   Use a ranged for loop to search through the 'pets' array above for the word 'pig' and print out its index.
  */
-
+for i in 0 ..< pets.count{
+    if pets[i] == "pig"{
+        print ("\(i)")
+    }
+}
 
 /*:
  - Experiment:
  Create an array of random numbers of your choosing then make a for loop that adds 1 to each number.
  */
+var randomNums  = [17, 40, 12]
 
+for j in 0 ..< randomNums.count{
+    randomNums[j] = randomNums[j] + 1
+}
+
+print(randomNums)
 
 /*:
  - Experiment:
@@ -65,7 +76,19 @@ for (_, numbers) in interestingNumbers {
         }
     }
 }
-print(largest)
+print("largest is \(largest)")
+
+
+
+var smallest = Int.max
+for (_, numbers) in interestingNumbers {
+    for number in numbers {
+        if number < smallest {
+            smallest = number
+        }
+    }
+}
+print("smallest is \(smallest)")
 
 
 /*:
@@ -74,6 +97,15 @@ print(largest)
  ie: N = 5, 1+3+5 = 9
  */
 
+var sum = 0
+var n = 30
+
+for k in 1...n{
+    if k % 2 == 1{
+        sum+=k
+    }
+}
+print(sum)
 
 /*:
  - Callout(Challenge):
@@ -88,6 +120,21 @@ print(largest)
  3: Occurs 2 times
  */
 
-let numberArray = [1, 4, 5, 5, 5, 3, 2, 1, 4, 2, 2, 2, 1]
+let numberArray : [Int] = [1, 4, 5, 5, 5, 3, 2, 1, 4, 2, 2, 2, 1]
 
-//: [Next](@next)
+var occurrencesDictionary : [Int:Int] = [:]
+
+
+var currentNumber = -1
+var numberOfOccurences = 0
+for p in 0 ..< numberArray.count{
+    currentNumber = numberArray[p]
+    if occurrencesDictionary[currentNumber] != nil{
+        occurrencesDictionary[currentNumber] = occurrencesDictionary[currentNumber]! + 1
+    }else{
+        occurrencesDictionary[currentNumber] = 1
+    }
+    
+}
+
+print(occurrencesDictionary)
